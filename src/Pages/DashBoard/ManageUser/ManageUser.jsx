@@ -56,6 +56,7 @@ const ManageUser = () => {
         <th>#</th>
         <th>Name</th>
         <th>email</th>
+     
         <th>role</th>
         <th>action</th>
         <th></th>
@@ -86,8 +87,14 @@ const ManageUser = () => {
          </td>
 
          <td>{user.role === 'admin'?'admin':user.role==='instructor'?'instructor':  <div className="flex gap-2">
+         <div className="badge badge-error gap-2">
+  Student
+</div>
          <button onClick={()=>handleAdmin(user)} className="btn btn-warning">Admin</button>
-         <button onClick={()=>handleInstructor(user)}  className="btn btn-info">Instrutor</button></div>}</td>
+
+         <button onClick={()=>handleInstructor(user)}  className="btn btn-info">Instrutor</button>
+         
+   </div>}</td>
 
        
          <th>

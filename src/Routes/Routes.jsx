@@ -13,6 +13,11 @@ import PrivateRoute from "./PrivateRoute";
 import DashBoard from "../Layout/DashBoard/DashBoard";
 import ManageUser from "../Pages/DashBoard/ManageUser/ManageUser";
 import ManageClasses from "../Pages/DashBoard/ManageClasses/ManageClasses";
+import AdminRoute from "./AdminRoute";
+import InstructorRoute from "./InstructorRoute";
+import InstructorClasses from "../Pages/DashBoard/InstructorClasses/InstructorClasses";
+import AddClasses from "../Pages/DashBoard/AddClasses/AddClasses";
+// import AdminRoute from "./AdminRoute";
 
   export const router = createBrowserRouter([
     {
@@ -53,12 +58,22 @@ import ManageClasses from "../Pages/DashBoard/ManageClasses/ManageClasses";
       element:<DashBoard></DashBoard>,
       children:[{
         path:'manageUser',
-        element:<ManageUser></ManageUser>
+        element:<AdminRoute><ManageUser></ManageUser></AdminRoute>
 
       },
       {
         path:'manageClasses',
-        element:<ManageClasses></ManageClasses>
+        element:<AdminRoute><ManageClasses></ManageClasses></AdminRoute>
+      },
+
+      {
+        path:'instructorclasses',
+        element:<InstructorRoute><InstructorClasses></InstructorClasses></InstructorRoute>
+      },
+
+      {
+        path:'addclasses',
+        element:<InstructorRoute><AddClasses></AddClasses></InstructorRoute>
       }
     
     ]

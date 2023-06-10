@@ -1,10 +1,14 @@
 import Swal from "sweetalert2";
 import useClasses from "../../../Hooks/useClasses";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+
+
 
 
 const ManageClasses = () => {
 
     const [classesInfo, refetch] = useClasses();
+    const [axiosSecure] =useAxiosSecure();
     console.log(classesInfo);
 
 
@@ -39,7 +43,45 @@ const ManageClasses = () => {
             })
 
     }
+///handke feed back
 
+const handleFeedback=(classid)=>{
+
+    Swal.fire({
+        title: "FeedBack!",
+        text: "Write something or your Action",
+        input: 'text',
+        showCancelButton: true        
+    }).then((result) => {
+        if (result.value) {
+            console.log("Result: " + result.value);
+            const feedbackdata = result.value;
+            const reason ={feadback:feedbackdata}
+         
+
+            // fetch(`http://localhost:5000/classesInfo/${classid._id}`,{
+            //     method:'POST',
+            //     headers:{
+            //         "content-type": "application/json"
+
+            //     },
+            //     body: JSON.stringify(feedback)
+                     
+            // })
+            // .then(res=>res.json())
+            axiosSecure.put(`/classesInfo/${classid._id}`,reason)
+            .then(data=>console.log('hello',data))
+            .catch(error => (console.log(error)))
+           
+        }
+    });
+
+
+}
+
+
+
+///////
 
     return (
         <div className="w-full">
@@ -72,19 +114,19 @@ const ManageClasses = () => {
 
                                 <div>{classItem.status === 'approved' ? <div className=" flex gap-3"><button onClick={() => handleApproved(classItem)} disabled='true' className="btn btn-info">Approve</button>
                                     <button onClick={() => handleDeny(classItem)} disabled='true' className="btn btn-warning pl-4 pr-4 "> Deny </button>
-                                    <button  className="btn  btn-success  "> Feedback </button>
+                                    <button  onClick={()=>handleFeedback(classItem)} className="btn btn-success  "> Feedback </button>
                                     </div>
 
 
                                     : classItem.status === 'deny' ? <div className="flex gap-3"><button disabled='true' onClick={() => handleApproved(classItem)} className="btn btn-info">Approve</button>
                                         <button disabled='true' onClick={() => handleDeny(classItem)} className="btn btn-warning pl-4 pr-4 "> Deny </button>
-                                        <button  className="btn  btn-success  "> Feedback </button>
+                                        <button onClick={()=>handleFeedback(classItem)}  className="btn  btn-success  "> Feedback </button>
                                         </div> :
 
 
                                         <div className="flex gap-3"><button onClick={() => handleApproved(classItem)} className="btn btn-info">Approve</button>
                                             <button onClick={() => handleDeny(classItem)} className="btn btn-warning pl-4 pr-4 "> Deny </button>
-                                            <button  className="btn  btn-success  "> Feedback </button>
+                                            <button onClick={()=>handleFeedback(classItem)}  className="btn  btn-success  "> Feedback </button>
                                             </div>}</div>
                             </div>
                         </div>

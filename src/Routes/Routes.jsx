@@ -55,7 +55,7 @@ import AddClasses from "../Pages/DashBoard/AddClasses/AddClasses";
     },
     {
       path:'dashboard',
-      element:<DashBoard></DashBoard>,
+      element:<PrivateRoute><DashBoard></DashBoard></PrivateRoute>,
       children:[{
         path:'manageUser',
         element:<AdminRoute><ManageUser></ManageUser></AdminRoute>

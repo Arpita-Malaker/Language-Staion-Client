@@ -16,7 +16,7 @@ const Registration = () => {
     // const from = location.state?.from?.pathname||'/';
   const onSubmit = data => { 
     
-    console.log(data);
+    // console.log(data);
     createUser(data.email,data.password)
     .then(result=>{
 
@@ -38,7 +38,7 @@ const Registration = () => {
         .then(res=>res.json())
         .then(()=>{
           if(data.insertedId){
-            console.log('user profile update')
+            // console.log('user profile update')
             reset();
             navigate('/');
           }

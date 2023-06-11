@@ -5,6 +5,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import SocialLogin from "../../Sheared/SocialLogin/SocialLogin";
+import { useForm } from "react-hook-form";
 
 
 const Login = () => {
@@ -14,20 +15,34 @@ const Login = () => {
     const location = useLocation();
 
     const from = location.state?.from?.pathname||'/';
+    const { register, handleSubmit } = useForm();
 
-   const handleLogin = event =>{
-    event.preventDefault();
-    const form = event.target;
-    const email = form.email.value;
-    const password = form.password.value;
-    console.log(email,password);
-    signIn(email,password)
-    .then(result=>{
-      const user = result.user;
-      console.log(user);
-      navigate(from,{replace:true})
-    })
+  //  const handleLogin = event =>{
+  //   event.preventDefault();
+  //   const form = event.target;
+  //   const email = form.email.value;
+  //   const password = form.password.value;
+  //   console.log(email,password);
+  //   signIn(email,password)
+  //   .then(result=>{
+  //     const user = result.user;
+  //     console.log(user);
+  //     navigate(from,{replace:true})
+  //   })
 
+  //  }
+
+  const onSubmit = data => { 
+    
+    signIn(data.email,data.password)
+      .then(result=>{
+        const user = result.user;
+        console.log(user);
+        navigate(from,{replace:true})
+      })
+      .catch(error =>console.log(error))
+    console.log(data);
+   
    }
 
     return (
@@ -38,22 +53,22 @@ const Login = () => {
           </div>
          
           <div  className="card w-full max-w-sm shadow-2xl bg-base-100">
-            <form onSubmit={handleLogin} className="card-body">
+            <form onSubmit={handleSubmit(onSubmit)} className="card-body">
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Email</span>
                 </label>
-                <input type="email" name="email" placeholder="email" className="input input-bordered" />
+                <input type="email" {...register("email", { required: true })} name="email" placeholder="email" className="input input-bordered" />
               </div>
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Password</span>
                 </label>
-                <input type="password" name="password" placeholder="password" className="input input-bordered" />
+                <input type="password"    {...register("password", { required: true })} name="password" placeholder="password" className="input input-bordered" />
               
               </div>
               <div className="form-control mt-6">
-                <input type="submit" className="btn btn-primary" value="Login"/>
+              <button className="btn btn-primary">Login</button>
               </div>
               <div className="mt-5 text-sm"><p>Are You New?<span className="mx-3"><Link to='/registration' className="text-blue-500 ">Register Here</Link></span></p></div>
               <SocialLogin></SocialLogin>

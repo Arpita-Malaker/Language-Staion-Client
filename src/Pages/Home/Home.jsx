@@ -16,6 +16,7 @@ import PopularClassSection from "../PopularClassSection/PopularClassSection";
 import PopularInstructorsSection from "../PopularInstructorsSection/PopularInstructorsSection";
 import ExtraSection from "../ExtraSection/ExtraSection";
 import { Bounce } from "react-awesome-reveal";
+import Extrasecond from "../Extrasecond/Extrasecond";
 
 
 const Home = () => {
@@ -121,9 +122,11 @@ const Home = () => {
             </div>
 
             <div><PopularClassSection></PopularClassSection></div>
+            <div><ExtraSection></ExtraSection></div>
+
 
             <div><PopularInstructorsSection></PopularInstructorsSection></div>
-<div><ExtraSection></ExtraSection></div>
+            <div><Extrasecond></Extrasecond></div>
 
 
         </div>

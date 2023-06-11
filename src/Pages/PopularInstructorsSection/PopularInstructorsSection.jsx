@@ -16,7 +16,7 @@ const PopularInstructorsSection = () => {
         // console.log(users)
     
     return (
-        <div className="mt-16">
+        <div className="mt-36">
         <Zoom><h2 className="text-sky-600 text-3xl font-bold text-center">Popular Instructor Section</h2></Zoom>
         
         <div className="grid md:grid-rows-2 grid-rows-6 grid-flow-col gap-4 ms-10 mt-16">

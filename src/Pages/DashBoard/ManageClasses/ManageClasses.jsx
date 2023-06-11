@@ -89,7 +89,7 @@ const handleFeedback=(classid)=>{
 
 
 
-            <div className=" mt-10 ml-6 grid  grid-flow-col gap-4 ">
+            <div className=" mt-10 ml-6 grid grid-rows-2 grid-flow-col gap-4 ">
                 {classesInfo.map(classItem =>
 
                     <div key={classItem._id} className="card w-96 bg-gray-200 shadow-xl p-2">

@@ -14,6 +14,7 @@ import './home.css'
 import Lottie from "lottie-react";
 import PopularClassSection from "../PopularClassSection/PopularClassSection";
 import PopularInstructorsSection from "../PopularInstructorsSection/PopularInstructorsSection";
+import ExtraSection from "../ExtraSection/ExtraSection";
 
 
 const Home = () => {
@@ -119,7 +120,7 @@ const Home = () => {
             <div><PopularClassSection></PopularClassSection></div>
 
             <div><PopularInstructorsSection></PopularInstructorsSection></div>
-
+<div><ExtraSection></ExtraSection></div>
 
 
         </div>

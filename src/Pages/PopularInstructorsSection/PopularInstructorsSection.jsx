@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import { Zoom } from "react-awesome-reveal";
 
 
 const PopularInstructorsSection = () => {
@@ -16,7 +17,7 @@ const PopularInstructorsSection = () => {
     
     return (
         <div className="mt-16">
-        <h2 className="text-sky-600 text-3xl font-bold text-center">Popular Instructor Section</h2>
+        <Zoom><h2 className="text-sky-600 text-3xl font-bold text-center">Popular Instructor Section</h2></Zoom>
         
         <div className="grid md:grid-rows-2 grid-rows-6 grid-flow-col gap-4 ms-10 mt-16">
             {users.slice(0,9).map(user => (user.role==='instructor')?

@@ -5,6 +5,7 @@ import useInstructor from "../../Hooks/useInstructor";
 import useAdmin from "../../hooks/useAdmin";
 import useAuth from "../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
+import { Zoom } from "react-awesome-reveal";
 
 
 
@@ -69,7 +70,7 @@ const PopularClassSection = () => {
     // const { user } = useAuth();
     return (
         <div className="mt-16">
-            <h2 className="text-sky-600 text-3xl font-bold text-center">Popular Class Section</h2>
+          <Zoom>  <h2 className="text-sky-600 text-3xl font-bold text-center">Popular Class Section</h2></Zoom>
 
             <div className="grid md:grid-rows-2 grid-rows-6 grid-flow-col gap-4 ms-10 mt-16">
                 {classesInfo.slice(0, 7).map(classItem => (classItem.status === 'approved') ?

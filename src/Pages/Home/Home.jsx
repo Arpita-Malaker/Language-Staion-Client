@@ -15,6 +15,7 @@ import Lottie from "lottie-react";
 import PopularClassSection from "../PopularClassSection/PopularClassSection";
 import PopularInstructorsSection from "../PopularInstructorsSection/PopularInstructorsSection";
 import ExtraSection from "../ExtraSection/ExtraSection";
+import { Bounce } from "react-awesome-reveal";
 
 
 const Home = () => {
@@ -44,9 +45,11 @@ const Home = () => {
 
                                     <div className="flex flrx-row">
                                         <div className="w-1/2 ">
-                                            <p className="font-bold text-4xl text-white mt-10">Wellcome to <span className="text-amber-400">Language</span> <br /><span className="text-amber-400">Station</span>
+           <Bounce>
+           <p className="font-bold text-4xl text-white mt-10">Wellcome to <span className="text-amber-400">Language</span> <br /><span className="text-amber-400">Station</span>
                                             </p>
                                             <p className="text-2xl font bold text-white mt-3">Language Learning <span className=" text-amber-400">Website for Kids</span></p>
+           </Bounce>
                                             <div className="mt-5"><button className="btn btn-warning">Start Your Free Trial</button></div>
                                         </div>
                                         <div className="w-9/12">

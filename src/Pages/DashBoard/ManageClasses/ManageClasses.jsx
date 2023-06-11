@@ -1,6 +1,6 @@
 import Swal from "sweetalert2";
 import useClasses from "../../../Hooks/useClasses";
-// import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
 
 
@@ -8,7 +8,7 @@ import useClasses from "../../../Hooks/useClasses";
 const ManageClasses = () => {
 
     const [classesInfo, refetch] = useClasses();
-    // const [axiosSecure] =useAxiosSecure();
+    const [axiosSecure] =useAxiosSecure();
     console.log(classesInfo);
 
 
@@ -31,50 +31,50 @@ const ManageClasses = () => {
 
     const handleDeny = classid => {
 
-//         fetch(`http://localhost:5000/classesInfo/${classid._id}`, {
-//             method: 'PUT'
-//         })
-//             .then(res => res.json())
-//             .then(data => {
-//                 if (data.modifiedCount) {
-//                     refetch();
-//                     Swal.fire(`${classid.className} is deny`)
-//                 }
-//             })
+        fetch(`http://localhost:5000/classesInfo/${classid._id}`, {
+            method: 'PUT'
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount) {
+                    refetch();
+                    Swal.fire(`${classid.className} is deny`)
+                }
+            })
 
-//     }
-// ///handke feed back
+    }
+///handke feed back
 
-// const handleFeedback=(classid)=>{
+const handleFeedback=(classid)=>{
 
-//     Swal.fire({
-//         title: "FeedBack!",
-//         text: "Write something or your Action",
-//         input: 'text',
-//         showCancelButton: true        
-//     }).then((result) => {
-//         if (result.value) {
-//             console.log("Result: " + result.value);
-//             const feedbackdata = result.value;
-//             const reason ={feadback:feedbackdata}
+    Swal.fire({
+        title: "FeedBack!",
+        text: "Write something or your Action",
+        input: 'text',
+        showCancelButton: true        
+    }).then((result) => {
+        if (result.value) {
+            console.log("Result: " + result.value);
+            const feedbackdata = result.value;
+            const reason ={feadback:feedbackdata}
          
 
-//             // fetch(`http://localhost:5000/classesInfo/${classid._id}`,{
-//             //     method:'POST',
-//             //     headers:{
-//             //         "content-type": "application/json"
+            // fetch(`http://localhost:5000/classesInfo/${classid._id}`,{
+            //     method:'POST',
+            //     headers:{
+            //         "content-type": "application/json"
 
-//             //     },
-//             //     body: JSON.stringify(feedback)
+            //     },
+            //     body: JSON.stringify(reason)
                      
-//             // })
-//             // .then(res=>res.json())
-//             axiosSecure.put(`/classesInfo/${classid._id}`,reason)
-//             .then(data=>console.log('hello',data))
-//             .catch(error => (console.log(error)))
+            // })
+            // .then(res=>res.json())
+            axiosSecure.patch(`/classesInfo/${classid._id}`,reason)
+            .then(data=>console.log('hello',data))
+            .catch(error => (console.log(error)))
            
-//         }
-//     });
+        }
+    });
 
 
 }

@@ -12,6 +12,8 @@ import img4 from '../../assets/images/banner.jpg'
 import a2 from '../../assets/animation/FINAL.json'
 import './home.css'
 import Lottie from "lottie-react";
+import PopularClassSection from "../PopularClassSection/PopularClassSection";
+import PopularInstructorsSection from "../PopularInstructorsSection/PopularInstructorsSection";
 
 
 const Home = () => {
@@ -113,6 +115,10 @@ const Home = () => {
 
                 </Swiper>
             </div>
+
+            <div><PopularClassSection></PopularClassSection></div>
+
+            <div><PopularInstructorsSection></PopularInstructorsSection></div>
 
 
 

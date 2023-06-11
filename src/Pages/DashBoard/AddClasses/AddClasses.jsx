@@ -15,7 +15,7 @@ const AddClasses = () => {
     const img_hosting_url = `https://api.imgbb.com/1/upload?key=${image_Hosting_Key}`
 
     const onSubmit = (data) => {
-        console.log(data);
+        // console.log(data);
         const formData = new FormData;
         formData.append('image', data.image[0])
 
@@ -29,10 +29,10 @@ const AddClasses = () => {
                 const imgURL= imgResponse.data.display_url;
                 const {className, price,seats,name,email,status} = data;
                 const classItems = {className, price:parseFloat(price),seats:parseInt(seats),name,email,status,image:imgURL}
-                console.log(classItems);
+                // console.log(classItems);
                 axiosSecure.post('/classesInfo',classItems)
                 .then(data=>{
-                    console.log('new data to the server', data.data)
+                    // console.log('new data to the server', data.data)
                     if(data.data.insertedId){
                         reset();
                         Swal.fire({

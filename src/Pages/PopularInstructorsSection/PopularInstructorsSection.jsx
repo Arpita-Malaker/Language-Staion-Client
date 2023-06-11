@@ -1,8 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
-import { Helmet } from "react-helmet-async";
 
 
-const Instructor = () => {
+const PopularInstructorsSection = () => {
     const {data: users =[]}=useQuery({
 
         queryKey:['users'],
@@ -12,17 +11,15 @@ const Instructor = () => {
         }
         
         })
+
+        // console.log(users)
+    
     return (
-        <div>
-             <Helmet>
-                <title>Language Station | All Instrauctor</title>
-            </Helmet>
-            
-     <div className="mt-16">
-     <h2 className="text-sky-600 text-3xl font-bold text-center">All Instructor Section</h2>
+        <div className="mt-16">
+        <h2 className="text-sky-600 text-3xl font-bold text-center">Popular Instructor Section</h2>
         
-        <div className="grid md:grid-rows-2 grid-rows-6 grid-flow-col gap-4 ms-10 mt-20">
-            {users.map(user => (user.role==='instructor')?
+        <div className="grid md:grid-rows-2 grid-rows-6 grid-flow-col gap-4 ms-10 mt-16">
+            {users.slice(0,9).map(user => (user.role==='instructor')?
 
               <div key={user._id} className=" ">
                   <div className="card w-96 bg-gray-200 shadow-xl p-2">
@@ -48,13 +45,10 @@ const Instructor = () => {
             )}
 
 
-       
+        </div>
         
     </div>
-     </div>
-        
-        </div>
     );
 };
 
-export default Instructor;
+export default PopularInstructorsSection;

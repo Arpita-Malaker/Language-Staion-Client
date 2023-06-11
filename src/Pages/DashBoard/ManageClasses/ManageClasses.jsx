@@ -1,6 +1,6 @@
 import Swal from "sweetalert2";
 import useClasses from "../../../Hooks/useClasses";
-import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+// import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
 
 
@@ -8,7 +8,7 @@ import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 const ManageClasses = () => {
 
     const [classesInfo, refetch] = useClasses();
-    const [axiosSecure] =useAxiosSecure();
+    // const [axiosSecure] =useAxiosSecure();
     console.log(classesInfo);
 
 
@@ -31,50 +31,50 @@ const ManageClasses = () => {
 
     const handleDeny = classid => {
 
-        fetch(`http://localhost:5000/classesInfo/${classid._id}`, {
-            method: 'PUT'
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data.modifiedCount) {
-                    refetch();
-                    Swal.fire(`${classid.className} is deny`)
-                }
-            })
+//         fetch(`http://localhost:5000/classesInfo/${classid._id}`, {
+//             method: 'PUT'
+//         })
+//             .then(res => res.json())
+//             .then(data => {
+//                 if (data.modifiedCount) {
+//                     refetch();
+//                     Swal.fire(`${classid.className} is deny`)
+//                 }
+//             })
 
-    }
-///handke feed back
+//     }
+// ///handke feed back
 
-const handleFeedback=(classid)=>{
+// const handleFeedback=(classid)=>{
 
-    Swal.fire({
-        title: "FeedBack!",
-        text: "Write something or your Action",
-        input: 'text',
-        showCancelButton: true        
-    }).then((result) => {
-        if (result.value) {
-            console.log("Result: " + result.value);
-            const feedbackdata = result.value;
-            const reason ={feadback:feedbackdata}
+//     Swal.fire({
+//         title: "FeedBack!",
+//         text: "Write something or your Action",
+//         input: 'text',
+//         showCancelButton: true        
+//     }).then((result) => {
+//         if (result.value) {
+//             console.log("Result: " + result.value);
+//             const feedbackdata = result.value;
+//             const reason ={feadback:feedbackdata}
          
 
-            // fetch(`http://localhost:5000/classesInfo/${classid._id}`,{
-            //     method:'POST',
-            //     headers:{
-            //         "content-type": "application/json"
+//             // fetch(`http://localhost:5000/classesInfo/${classid._id}`,{
+//             //     method:'POST',
+//             //     headers:{
+//             //         "content-type": "application/json"
 
-            //     },
-            //     body: JSON.stringify(feedback)
+//             //     },
+//             //     body: JSON.stringify(feedback)
                      
-            // })
-            // .then(res=>res.json())
-            axiosSecure.put(`/classesInfo/${classid._id}`,reason)
-            .then(data=>console.log('hello',data))
-            .catch(error => (console.log(error)))
+//             // })
+//             // .then(res=>res.json())
+//             axiosSecure.put(`/classesInfo/${classid._id}`,reason)
+//             .then(data=>console.log('hello',data))
+//             .catch(error => (console.log(error)))
            
-        }
-    });
+//         }
+//     });
 
 
 }
@@ -85,11 +85,11 @@ const handleFeedback=(classid)=>{
 
     return (
         <div className="w-full">
-            <h2 className="text-center font-bold text-blue-700 text-2xl mt-16">Show All the Classes</h2>
+            <h2 className="text-center font-bold text-blue-700 text-2xl mt-16">Show All the Classes: {classesInfo.length}</h2>
 
 
 
-            <div className=" mt-10 ml-6 grid grid-rows-2 grid-flow-col gap-4 ">
+            <div className=" mt-10 ml-6 grid md:grid-rows-4 grid-flow-col gap-4 ">
                 {classesInfo.map(classItem =>
 
                     <div key={classItem._id} className="card w-96 bg-gray-200 shadow-xl p-2">

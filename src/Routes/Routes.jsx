@@ -37,7 +37,7 @@ import AddClasses from "../Pages/DashBoard/AddClasses/AddClasses";
         },
         {
           path:'/classes',
-          element:<PrivateRoute><Classes></Classes></PrivateRoute>
+          element:<Classes></Classes>
 
         },
         {

@@ -1,6 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../../hooks/useAuth";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
+
 
 
 
@@ -47,6 +49,8 @@ const StudentClassesCart = () => {
             })
 
         }
+
+     
    
     return (
         <div className="ml-12">
@@ -75,7 +79,7 @@ const StudentClassesCart = () => {
         <td>{cart.instructor}</td>
         <td>{cart.instructorEmai}</td>
         <td>${cart.price}</td>
-        <td><button className="btn btn-info ">Payment</button></td>
+        <td><Link to='/dashboard/paymentstudent' state={cart.price}><button  className="btn btn-info ">Payment</button></Link></td>
         <td><button onClick={()=>{handleDelete(cart)}} className="btn btn-warning">Delete</button></td>
       </tr>:'')
      }

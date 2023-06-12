@@ -43,8 +43,8 @@ const [isInstructor] = useInstructor();
               
               <div>
                  <li><Link to='studenthome'>Student Home</Link></li>
-                <li><Link >class</Link></li>
-                <li><Link >payment</Link></li>
+                <li><Link to='studentclasse'>class</Link></li>
+                <li><Link to='paymentstudent'>payment</Link></li>
               </div>
 
 

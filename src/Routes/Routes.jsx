@@ -17,6 +17,9 @@ import AdminRoute from "./AdminRoute";
 import InstructorRoute from "./InstructorRoute";
 import InstructorClasses from "../Pages/DashBoard/InstructorClasses/InstructorClasses";
 import AddClasses from "../Pages/DashBoard/AddClasses/AddClasses";
+import StudentClass from "../Pages/StudentClass/StudentClass";
+
+import PaymentStudent from "../Pages/DashBoard/Paymentstudent/PaymentStudent";
 // import AdminRoute from "./AdminRoute";
 
   export const router = createBrowserRouter([
@@ -74,6 +77,14 @@ import AddClasses from "../Pages/DashBoard/AddClasses/AddClasses";
       {
         path:'addclasses',
         element:<InstructorRoute><AddClasses></AddClasses></InstructorRoute>
+      },
+      {
+        path:'studentclasse',
+        element:<StudentClass></StudentClass>
+      },
+      {
+        path:'paymentstudent',
+        element:<PaymentStudent></PaymentStudent>
       }
     
     ]

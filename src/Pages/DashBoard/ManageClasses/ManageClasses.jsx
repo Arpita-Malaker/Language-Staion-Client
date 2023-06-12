@@ -15,7 +15,7 @@ const ManageClasses = () => {
     const handleApproved = classid => {
         // console.log("ennnnnnnnnnnnnnnnnn  ")
 
-        fetch(`http://localhost:5000/classesInfo/${classid._id}`, {
+        fetch(`http://localhost:5000/classesInfo/admin/${classid._id}`, {
             method: 'PATCH'
         })
             .then(res => res.json())
@@ -31,7 +31,7 @@ const ManageClasses = () => {
 
     const handleDeny = classid => {
 
-        fetch(`http://localhost:5000/classesInfo/${classid._id}`, {
+        fetch(`http://localhost:5000/classesInfo/admin/${classid._id}`, {
             method: 'PUT'
         })
             .then(res => res.json())
@@ -56,21 +56,24 @@ const handleFeedback=(classid)=>{
         if (result.value) {
             console.log("Result: " + result.value);
             const feedbackdata = result.value;
-            const reason ={feadback:feedbackdata}
+            const reason = {feedback:feedbackdata}
+            
+
+            console.log(feedbackdata);
          
 
-            // fetch(`http://localhost:5000/classesInfo/${classid._id}`,{
-            //     method:'POST',
-            //     headers:{
-            //         "content-type": "application/json"
+            fetch(`http://localhost:5000/classesInfo/${classid._id}`,{
+                method:'PATCH',
+                headers:{
+                    "content-type": "application/json"
 
-            //     },
-            //     body: JSON.stringify(reason)
+                },
+                body: JSON.stringify(reason)
                      
-            // })
-            // .then(res=>res.json())
-            axiosSecure.patch(`/classesInfo/${classid._id}`,reason)
-            .then(data=>console.log('hello',data))
+            })
+            .then(res=>res.json())
+            // axiosSecure.patch(`/classesInfo/${classid._id}`,feedbackdata )
+            // .then(data=>console.log('hello',data))
             .catch(error => (console.log(error)))
            
         }

@@ -17,6 +17,8 @@ const PopularClassSection = () => {
     const [isAdmin] = useAdmin();
     const [isInstructor] = useInstructor();
     const navigate = useNavigate();
+
+    // console.log(classesInfo.feedback[0])
     const handleSelect = (item) => {
 
         if (user && !isAdmin && !isInstructor) {
@@ -73,7 +75,7 @@ const PopularClassSection = () => {
           <Zoom>  <h2 className="text-sky-600 text-3xl font-bold text-center">Popular Class Section</h2></Zoom>
 
             <div className="grid md:grid-rows-2 grid-rows-6 grid-flow-col gap-4 ms-10 mt-16">
-                {classesInfo.slice(0, 7).map(classItem => (classItem.status === 'approved') ?
+                {classesInfo.slice(0, 6).map(classItem => (classItem.status === 'approved') ?
 
                     <div key={classItem._id} className=" ">
                         <div className="card w-96 bg-gray-200 shadow-xl p-2">
@@ -91,6 +93,7 @@ const PopularClassSection = () => {
                                 <div className=" text-purple-800">
                                     <p>Instructor Name:{classItem.name}</p>
                                     <p>Email:{classItem.email}</p>
+                                    
 
                                 </div>
                                 <button onClick={() => { handleSelect(classItem) }} className="btn btn-info">Select</button>

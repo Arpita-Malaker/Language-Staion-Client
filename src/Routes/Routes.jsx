@@ -17,9 +17,10 @@ import AdminRoute from "./AdminRoute";
 import InstructorRoute from "./InstructorRoute";
 import InstructorClasses from "../Pages/DashBoard/InstructorClasses/InstructorClasses";
 import AddClasses from "../Pages/DashBoard/AddClasses/AddClasses";
-import StudentClass from "../Pages/StudentClass/StudentClass";
+
 
 import PaymentStudent from "../Pages/DashBoard/Paymentstudent/PaymentStudent";
+import StudentClassesCart from "../Pages/DashBoard/StudentClassesCart/StudentClassesCart";
 // import AdminRoute from "./AdminRoute";
 
   export const router = createBrowserRouter([
@@ -79,8 +80,8 @@ import PaymentStudent from "../Pages/DashBoard/Paymentstudent/PaymentStudent";
         element:<InstructorRoute><AddClasses></AddClasses></InstructorRoute>
       },
       {
-        path:'studentclasse',
-        element:<StudentClass></StudentClass>
+        path:'studentclassescart',
+        element:<StudentClassesCart></StudentClassesCart>
       },
       {
         path:'paymentstudent',

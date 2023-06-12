@@ -44,7 +44,8 @@ const [isInstructor] = useInstructor();
               <div>
                  <li><Link to='studenthome'>Student Home</Link></li>
                 <li><Link to='studentclassescart'>class</Link></li>
-                <li><Link to='paymentstudent'>payment</Link></li>
+                {/* <li><Link to='paymentstudent'>payment</Link></li> */}
+                <li><Link to='enrolledclass'>Enrolled Classes</Link></li> 
               </div>
 
 

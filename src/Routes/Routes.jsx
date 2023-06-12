@@ -21,6 +21,7 @@ import AddClasses from "../Pages/DashBoard/AddClasses/AddClasses";
 
 import PaymentStudent from "../Pages/DashBoard/Paymentstudent/PaymentStudent";
 import StudentClassesCart from "../Pages/DashBoard/StudentClassesCart/StudentClassesCart";
+import EnrolledClasses from "../Pages/EnrolledClass/EnrolledClasses";
 // import AdminRoute from "./AdminRoute";
 
   export const router = createBrowserRouter([
@@ -86,6 +87,10 @@ import StudentClassesCart from "../Pages/DashBoard/StudentClassesCart/StudentCla
       {
         path:'paymentstudent',
         element:<PaymentStudent></PaymentStudent>
+      },
+      {
+        path:'enrolledclass',
+        element:<EnrolledClasses></EnrolledClasses>
       }
     
     ]

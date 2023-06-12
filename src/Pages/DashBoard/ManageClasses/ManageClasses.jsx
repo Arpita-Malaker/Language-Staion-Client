@@ -112,6 +112,7 @@ const handleFeedback=(classid)=>{
                                 <p>Email:{classItem.email}</p>
 
                             </div>
+                            <div className="text-blue-800 font-bold text-xl">{classItem.EnrollStudent?<p>Enroll Student:{classItem.EnrollStudent}</p>:<p>No enroll Student</p>}</div>
                             <div className="card-actions justify-center mt-5">
 
 

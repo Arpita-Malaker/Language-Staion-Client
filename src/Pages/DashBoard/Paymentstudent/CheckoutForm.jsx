@@ -2,12 +2,22 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useEffect, useState } from "react";
 import useAuth from "../../../hooks/useAuth";
 
+// import './CheckoutFORM.css'
 
 
-const CheckoutForm = ({price}) => {
+
+
+
+const CheckoutForm = ({data}) => {
+
+  // console.log(data);
     
     const stripe = useStripe();
     const {user}= useAuth();
+   
+ 
+  const price= data.price;
+  
 
     const elements =  useElements();
     
@@ -15,6 +25,8 @@ const CheckoutForm = ({price}) => {
     const [processing,setProcessing] = useState(false);
     const [clientSecret, setClientSecret] = useState("");
     const [transactionId,setTransactionId]= useState('');
+
+   
     useEffect(() => {
      if(price>0){
        // Create PaymentIntent as soon as the page loads
@@ -81,10 +93,57 @@ const CheckoutForm = ({price}) => {
 
         if(paymentIntent.status =='succeeded'){
           setTransactionId(paymentIntent.id);
-          // const transactionId = paymentIntent.id;
+          const transactionId = paymentIntent.id;
+
+          // const payment ={
+          
+
+
+          // }
+
+          fetch("http://localhost:5000/payments", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({  email:user?.email,
+              date:new Date(),
+              transactionId,
+              price,
+             itemiD:data.itemId,
+             itemName:data.classNme,
+             cartId:data._id,
+             instuctorName:data.
+             instructor,
+             img:data.classImg,
+             instructorEmail:data.instructorEmai,
+             priceclass:data.price,
+             seats:data.seats
+            }),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+            console.log(data)});
+
+
+            fetch(`http://localhost:5000/classesInfo/${data.itemId}`,{
+              method:'PUT',
+              headers:{"Content-Type": "application/json"},
+              body:JSON.stringify({seats:data.seats})
+            })
+            .then(res=>res.json())
+            .then(data=>{
+              console.log('j',data)
+            })
+
         }
+
+        ///
+       
+
+        //
           
     }
+
+  
 
 
 
@@ -108,7 +167,7 @@ const CheckoutForm = ({price}) => {
             },
           }}
         />
-        <button className="btn btn-warning mt-6 btn-sm" type="submit" disabled={!stripe || !clientSecret ||processing}>
+        <button className="btn btn-warning mt-6 btn-sm" type="submit" disabled={!stripe || !clientSecret || processing}>
           Pay
         </button>
       </form>

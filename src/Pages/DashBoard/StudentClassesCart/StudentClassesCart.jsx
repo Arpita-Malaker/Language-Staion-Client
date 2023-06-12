@@ -3,21 +3,27 @@ import useAuth from "../../../hooks/useAuth";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 
+// import { useState } from "react";
+
 
 
 
 const StudentClassesCart = () => {
     const{user}= useAuth();
-    console.log(user.email)
+    // console.log(user.email)
+    // const isAnonymous = false;
+    // const [isDisabled, setIsDisabled] = useState(false);
     const {data: carts =[],refetch}=useQuery({
 
         queryKey:['carts'],
         queryFn: async()=>{
-            const res = await fetch('http://localhost:5000/carts')
+            const res = await fetch(`http://localhost:5000/carts/${user?.email}`)
             return res.json();
         }
         
         })
+
+        console.log(carts);
 
         const handleDelete=(item)=>{
 
@@ -50,8 +56,13 @@ const StudentClassesCart = () => {
 
         }
 
+
+// const handleClick = event => {
+//     event.currentTarget.disabled = true;
+//     console.log('button clicked');
+//   };
      
-   
+
     return (
         <div className="ml-12">
             <h2 className="text-blue-600 text-center text-3xl font-bold mt-16">Student Cart</h2>
@@ -79,7 +90,7 @@ const StudentClassesCart = () => {
         <td>{cart.instructor}</td>
         <td>{cart.instructorEmai}</td>
         <td>${cart.price}</td>
-        <td><Link to='/dashboard/paymentstudent' state={cart.price}><button  className="btn btn-info ">Payment</button></Link></td>
+        <td><Link to='/dashboard/paymentstudent'  state={cart}><button className="btn btn-info ">Payment</button></Link></td>
         <td><button onClick={()=>{handleDelete(cart)}} className="btn btn-warning">Delete</button></td>
       </tr>:'')
      }

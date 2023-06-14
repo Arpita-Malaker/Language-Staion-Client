@@ -30,7 +30,7 @@ const CheckoutForm = ({data}) => {
     useEffect(() => {
      if(price>0){
        // Create PaymentIntent as soon as the page loads
-       fetch("http://localhost:5000/create-payment-intent", {
+       fetch("https://b7a12-summer-camp-server-side-arpita-malaker.vercel.app/create-payment-intent", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({price}),
@@ -101,7 +101,7 @@ const CheckoutForm = ({data}) => {
 
           // }
 
-          fetch("http://localhost:5000/payments", {
+          fetch("https://b7a12-summer-camp-server-side-arpita-malaker.vercel.app/payments", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({  email:user?.email,
@@ -124,7 +124,7 @@ const CheckoutForm = ({data}) => {
             console.log(data)});
 
 
-            fetch(`http://localhost:5000/classesInfo/${data.itemId}`,{
+            fetch(`https://b7a12-summer-camp-server-side-arpita-malaker.vercel.app/classesInfo/${data.itemId}`,{
               method:'PUT',
               headers:{"Content-Type": "application/json"},
               body:JSON.stringify({seats:data.seats})

@@ -13,6 +13,7 @@ const {user} = useContext(AuthContext);
     const [axiosSecure] =useAxiosSecure();
     const {data: isInstructor, isLoading:isInstructorLoading}= useQuery({
         queryKey:['isInstrutor', user?.email],
+        enabled: !! user?.email && !! localStorage.getItem('access-token'),
         queryFn: async()=>{
             const res = await axiosSecure.get(`/users/instructor/${user?.email}`)
             console.log('is insturctor res', res )

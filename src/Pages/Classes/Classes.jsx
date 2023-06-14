@@ -100,7 +100,13 @@ const Classes = () => {
                                 <p>Email:{classItem.email}</p>
 
                             </div>
-                            <button onClick={()=>{handleSelect(classItem)}} className="btn btn-info">Select</button>
+                            {classItem.seats<0 || (isAdmin) || (isInstructor)?<>
+                                <button disabled={true} onClick={()=>{handleSelect(classItem)}} className="btn btn-info">Select</button>
+
+                            </>:<button onClick={()=>{handleSelect(classItem)}} className="btn btn-info">Select</button>
+
+                            
+                        }
                            
                         </div>
                     </div>

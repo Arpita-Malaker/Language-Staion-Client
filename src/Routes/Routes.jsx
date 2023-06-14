@@ -22,6 +22,7 @@ import AddClasses from "../Pages/DashBoard/AddClasses/AddClasses";
 import PaymentStudent from "../Pages/DashBoard/Paymentstudent/PaymentStudent";
 import StudentClassesCart from "../Pages/DashBoard/StudentClassesCart/StudentClassesCart";
 import EnrolledClasses from "../Pages/EnrolledClass/EnrolledClasses";
+import Mainuserhome from "../Pages/Mainuserhome/Mainuserhome";
 // import AdminRoute from "./AdminRoute";
 
   export const router = createBrowserRouter([
@@ -91,6 +92,11 @@ import EnrolledClasses from "../Pages/EnrolledClass/EnrolledClasses";
       {
         path:'enrolledclass',
         element:<EnrolledClasses></EnrolledClasses>
+      },
+
+      {
+        path:'userhome',
+        element:<Mainuserhome></Mainuserhome>
       }
     
     ]

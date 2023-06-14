@@ -13,7 +13,7 @@ const EnrolledClasses = () => {
 
     //     queryKey:['carts',user?.email],
     //     queryFn: async()=>{
-    //         const res = await fetch(`http://localhost:5000/carts/${user?.email}`)
+    //         const res = await fetch(`https://b7a12-summer-camp-server-side-arpita-malaker.vercel.app/carts/${user?.email}`)
     //         return res.json();
     //     }
         
@@ -23,9 +23,9 @@ const EnrolledClasses = () => {
 
         const {data: payments =[]}=useQuery({
 
-            queryKey:['payments',user?.email],
+            queryKey:['payments'],
             queryFn: async()=>{
-                const res = await fetch(`http://localhost:5000/payments/${user?.email}`)
+                const res = await fetch(`https://b7a12-summer-camp-server-side-arpita-malaker.vercel.app/payments`)
                 return res.json();
             }
             
@@ -33,7 +33,7 @@ const EnrolledClasses = () => {
 
         // console.log(payments);
 
-        // fetch(`http://localhost:5000/classesInfo/admin/${._id}`, {
+        // fetch(`https://b7a12-summer-camp-server-side-arpita-malaker.vercel.app/classesInfo/admin/${._id}`, {
         //     method: 'PUT'
         // })
         //     .then(res => res.json())
@@ -44,7 +44,8 @@ const EnrolledClasses = () => {
         //         }
         //     })
 
-
+  console.log(payments)
+  console.log(user.email);
     
 
      
@@ -52,15 +53,13 @@ const EnrolledClasses = () => {
 
     return (
         <div>
-           
-        <p> length: {payments.length}</p>
+       <p className="text-center text-blue-600 text-2xl mt-16 mb-10 font-bold">Students Enrolled class</p>
 
         <div className=" mt-10 ml-6 grid grid-flow-col gap-4">
             
         {
-            payments.map(pay=><div key={pay._id}>
-                
-                <div  className="card w-96 bg-gray-200 shadow-xl p-2">
+            payments.map(pay=>(pay.email===user.email )?
+            <div key={pay._id} className="card w-96 bg-gray-200 shadow-xl p-2">
                         <figure><img className='h-48 w-96' src={pay.img} alt="class" /></figure>
                         <div className="card-body">
                             <h2 className="card-title">
@@ -84,7 +83,15 @@ const EnrolledClasses = () => {
                             </div>
                         </div>
                     </div>
-                </div>
+            
+            
+            
+            
+            
+            :''
+                
+                
+                
 
           
 

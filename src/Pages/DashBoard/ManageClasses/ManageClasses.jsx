@@ -15,11 +15,12 @@ const ManageClasses = () => {
     const handleApproved = classid => {
         // console.log("ennnnnnnnnnnnnnnnnn  ")
 
-        fetch(`http://localhost:5000/classesInfo/admin/${classid._id}`, {
+        fetch(`https://b7a12-summer-camp-server-side-arpita-malaker.vercel.app/classesInfo/admin/${classid._id}`, {
             method: 'PATCH'
         })
             .then(res => res.json())
             .then(data => {
+                refetch()
                 if (data.modifiedCount) {
                     refetch();
                     Swal.fire(`${classid.className} is approved`)
@@ -31,11 +32,12 @@ const ManageClasses = () => {
 
     const handleDeny = classid => {
 
-        fetch(`http://localhost:5000/classesInfo/admin/${classid._id}`, {
+        fetch(`https://b7a12-summer-camp-server-side-arpita-malaker.vercel.app/classesInfo/admin/${classid._id}`, {
             method: 'PUT'
         })
             .then(res => res.json())
             .then(data => {
+                refetch()
                 if (data.modifiedCount) {
                     refetch();
                     Swal.fire(`${classid.className} is deny`)
@@ -62,7 +64,7 @@ const handleFeedback=(classid)=>{
             console.log(feedbackdata);
          
 
-            fetch(`http://localhost:5000/classesInfo/${classid._id}`,{
+            fetch(`https://b7a12-summer-camp-server-side-arpita-malaker.vercel.app/classesInfo/${classid._id}`,{
                 method:'PATCH',
                 headers:{
                     "content-type": "application/json"

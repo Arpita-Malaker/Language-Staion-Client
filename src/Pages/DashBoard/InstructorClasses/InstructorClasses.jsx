@@ -43,6 +43,11 @@ const InstructorClasses = () => {
 
                                 classItem.feedback ? <p>Feedback: {classItem.feedback}</p> : ''
                             }</div>
+                            <div className="text-blue-600 text-xl ">Enrolled Seats:{classItem.EnrollStudent?<>{classItem.EnrollStudent}</>:0}</div>
+
+                            <div>
+                                <button className="btn btn-info">Update</button>
+                            </div>
 
 
                         </div>

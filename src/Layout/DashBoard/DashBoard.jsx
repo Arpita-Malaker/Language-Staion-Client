@@ -15,6 +15,8 @@ const [isInstructor] = useInstructor();
       <div className="drawer-content flex flex-col ">
        
       <Outlet></Outlet>
+
+    
         <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
 
       </div>
@@ -28,13 +30,13 @@ const [isInstructor] = useInstructor();
 
           {
             isAdmin ? <div>
-               <li><Link to='adminhome'>Admin Home</Link></li>
+               <li><Link to='userhome'>Admin Home</Link></li>
               <li><Link to='manageClasses'>Manage Classes</Link></li>
               <li><Link to='manageUser'>Manage User</Link></li>
             </div> : 
             
             isInstructor ? <div>
-               <li><Link to='instructorhome'>Instructor Home</Link></li>
+               <li><Link to='userhome'>Instructor Home</Link></li>
               <li><Link to='instructorclasses' >My classes</Link></li>
               <li><Link to='addclasses'>Add Classes</Link></li>
 
@@ -42,7 +44,7 @@ const [isInstructor] = useInstructor();
               : 
               
               <div>
-                 <li><Link to='studenthome'>Student Home</Link></li>
+                 <li><Link to='userhome'>Student Home</Link></li>
                 <li><Link to='studentclassescart'>class</Link></li>
                 {/* <li><Link to='paymentstudent'>payment</Link></li> */}
                 <li><Link to='enrolledclass'>Enrolled Classes</Link></li> 

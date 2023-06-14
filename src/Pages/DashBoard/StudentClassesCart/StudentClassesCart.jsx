@@ -17,7 +17,7 @@ const StudentClassesCart = () => {
 
         queryKey:['carts'],
         queryFn: async()=>{
-            const res = await fetch(`http://localhost:5000/carts/${user?.email}`)
+            const res = await fetch(`https://b7a12-summer-camp-server-side-arpita-malaker.vercel.app/carts/${user?.email}`)
             return res.json();
         }
         
@@ -37,7 +37,7 @@ const StudentClassesCart = () => {
                 confirmButtonText: 'Yes, delete it!'
             }).then((data)=>{
                 if (data.isConfirmed) {
-                    fetch(`http://localhost:5000/carts/${item._id}`, {
+                    fetch(`https://b7a12-summer-camp-server-side-arpita-malaker.vercel.app/carts/${item._id}`, {
                         method: 'DELETE'
                     })
                         .then(res => res.json())
@@ -65,15 +65,15 @@ const StudentClassesCart = () => {
 
     return (
         <div className="ml-12">
-            <h2 className="text-blue-600 text-center text-3xl font-bold mt-16">Student Cart</h2>
+            <h2 className="text-blue-600 text-center text-3xl mb-10 font-bold mt-16">Student Cart</h2>
 
-          <p className="text-blue-600 text-center text-2xl font-bold mt-5 mb-16">Cart length:  {carts.length}</p>
+          
             <div className="overflow-x-auto">
   <table className="table">
     {/* head */}
     <thead>
       <tr>
-        <th>index</th>
+       
         <th>Class Name</th>
         <th>Instrauctor</th>
         <th>Instrauctor Email</th>
@@ -84,8 +84,8 @@ const StudentClassesCart = () => {
     </thead>
     <tbody>
      {
-        carts.map((cart,index)=>(cart.userEmail===user.email) ?<tr key={cart._id}>
-        <th>{index+1}</th>
+        carts.map((cart)=>(cart.userEmail===user.email) ?<tr key={cart._id}>
+        
         <td>{cart.classNme}</td>
         <td>{cart.instructor}</td>
         <td>{cart.instructorEmai}</td>
